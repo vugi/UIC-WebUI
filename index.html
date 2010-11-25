@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>New Web Project</title>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script> 
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" type="text/css" media="screen">
+		
+		<style type="text/css">
+			body {
+				font-family: sans-serif;
+			}
+			#wrapper {
+				width: 800px;
+				margin: 0 auto;
+			}
+			#weight-add {
+			}
+			
+			div {
+				padding: 10px;
+			}
+			td {
+				padding: 3px 20px;
+			}
+			.sumrow td {
+				border-top: 1px solid black;
+			}
+			.red {
+				color: red;
+			}
+			.green {
+				color: green;
+			}
+			
+		</style>
+    </head>
+    <body>
+    	<div id="wrapper">
+	    	<div id="header">
+	        	<h1>Walking off weight</h1>
+			</div>
+			<div id="content" class="ui-widget">
+
+				<div id="weight-add" class="ui-widget-header ui-corner-all">
+					<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+					Syötä päivän paino: <input type="text" /> OK
+					<span class="ui-icon ui-icon-circle-close" style="float:right">close</span>
+				</div>
+				
+				<h3>Yhteenveto</h3>
+				
+				<div class="ui-widget-content">
+					<img src="http://chart.apis.google.com/chart?chxs=0,676767,10.833,0,l,676767&chxt=x&chbh=a,5,20&chs=450x200&cht=bvg&chco=76A4FB&chd=s:1XQbnf4&chg=9,9,6,4&chm=B,C6D9FD,0,0,0|D,4D89F9,0,0.033,5.667,1" />
+					<img src="http://chart.apis.google.com/chart?chs=300x200&cht=gom&chd=t:70" />
+				</div>
+				
+				<h3>Kävely</h3>
+				
+				<div class="ui-widget-content">
+					<table>
+						<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
+						<tr><td>Tavoite</td><td>10000</td><td>70000</td><td>300000</td></tr>
+						<tr><td>Toteutunut</td><td>7000</td><td>50000</td><td>320000</td></tr>
+						<tr class="sumrow"><td></td><td class="red">-3000</td><td class="red">-20000</td><td class="green">+20000</td></tr>
+					</table>
+				</div>
+				
+				<h3>Paino</h3>
+				
+				<div class="ui-widget-content">
+					<table>
+						<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
+						<tr><td>Tavoite</td><td>10000</td><td>70000</td><td>300000</td></tr>
+						<tr><td>Toteutunut</td><td>7000</td><td>50000</td><td>320000</td></tr>
+						<tr class="sumrow"><td></td><td class="red">-3000</td><td class="red">-20000</td><td class="green">+20000</td></tr>
+					</table>
+				</div>
+					
+			</div>
+		</div>
+    </body>
+</html>
