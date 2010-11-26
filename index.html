@@ -41,6 +41,9 @@
 		<script type="text/javascript">
 		$(function() {
 			$( "#tabs" ).tabs();
+			$( ".accordion" ).accordion({
+				autoHeight: false
+			});
 		});
 		</script>
 		
@@ -100,39 +103,83 @@
 			
 				<div id="tabs-2">
 					
+					<div class="ui-widget-content">
+						<img src="http://chart.apis.google.com/chart?chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chs=500x193&cht=bvg&chco=76A4FB,FF0000&chd=t1:50,90,80,70,60,50,40,50,90,80,70,60,50,40|80&chm=H,FF0000,1,1,1&chdl=Toteutunut|Tavoite" />
+					</div>
+					
 					<h3>Kertymä</h3>
-					<table>
-						<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
-						<tr><td>Tavoite</td><td>10000</td><td>70000</td><td>300000</td></tr>
-						<tr><td>Toteutunut</td><td>7000</td><td>50000</td><td>320000</td></tr>
-						<tr class="sumrow"><td></td><td class="red">-3000</td><td class="red">-20000</td><td class="green">+20000</td></tr>
-					</table>
+					<div class="ui-widget-content">
+						<table>
+							<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
+							<tr><td>Tavoite</td><td>10000</td><td>70000</td><td>300000</td></tr>
+							<tr><td>Toteutunut</td><td>7000</td><td>50000</td><td>320000</td></tr>
+							<tr class="sumrow"><td></td><td class="red">-3000</td><td class="red">-20000</td><td class="green">+20000</td></tr>
+						</table>
+					</div>
 					
 					<h3>Tavoitteet</h3>
-					<p>Tavoitteesi on nyt: <b>10000</b> askelta <b>päivässä</b></p>
-					<p>
-						<h4>Aseta tavoite</h4>
-						<input type="text" /> askelta<br />
-						<input type="radio" name="1"> Päivässä <br />
-						<input type="radio" name="1"> Viikossa  <br />
-						<input type="radio" name="1"> Kuukaudessa <br />
-						<button>Aseta</button>
-					</p>
-					<p>
-						<h4>Laske tavoite</h4>
-						Ikä: <input type="text" /><br />
-						Muut tarvittavat kentät selvitetään asiantuntijalta
-						<button>Laske</button>
-					</p>
+					<div class="ui-widget-content">
+						<p>Tavoitteesi on nyt: <b>10000</b> askelta <b>päivässä</b></p>
+						
+						<div class="accordion">
+							<h3><a href="#">Aseta tavoite</a></h3>
+							<div id="aseta">
+								<input type="text" /> askelta<br />
+								<input type="radio" name="1"> Päivässä <br />
+								<input type="radio" name="1"> Viikossa  <br />
+								<input type="radio" name="1"> Kuukaudessa <br />
+								<button>Aseta</button>
+							</div>
+							<h3><a href="#">Laske tavoite</a></h3>
+							<div id="laske">
+								Ikä: <input type="text" /><br />
+								Muut tarvittavat kentät selvitetään asiantuntijalta<br />
+								<button>Laske</button>
+							</div>
+						</div>
+						
+					</div>
+					
 				</div>
 				
 				<div id="tabs-3">
-					<table>
-						<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
-						<tr><td>Tavoite</td><td>10000</td><td>70000</td><td>300000</td></tr>
-						<tr><td>Toteutunut</td><td>7000</td><td>50000</td><td>320000</td></tr>
-						<tr class="sumrow"><td></td><td class="red">-3000</td><td class="red">-20000</td><td class="green">+20000</td></tr>
-					</table>
+					
+					<div class="ui-widget-content">
+						<img src="http://chart.apis.google.com/chart?chs=500x193&cht=lc&chg=0,10&chds=80,90&chxr=1,80,90&chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chco=76A4FB,FF9900&chd=t:90,89,88,89,88,88,87,87,86,85,84,84,84,83|90,80&chdl=Paino|Tavoite" />
+					</div>
+					
+					<br />
+					
+					<div class="ui-widget-content">
+						<table style="float: left; margin-right: 40px;">
+							<tr><td>Paino nyt</td><td>75</td></tr>
+							<tr><td>Tavoite</td><td>70</td></tr>
+							<tr class="sumrow"><td>Ero</td><td class="red">+5</td></tr>
+						</table>
+						<p>Viimeisen viikon muutos: <span class="red">+1kg</span></p>
+						<p>Viimeisen kuukauden muutos: <span class="green">-5kg</span></p>
+					</div>
+					
+					<h3>Tavoitteet</h3>
+					<div class="ui-widget-content">
+						<p>Tavoitepainosi on: <b>70</b>kg <b>31.12</b> mennessä</p>
+						
+						<div class="accordion">
+							<h3><a href="#">Aseta tavoite</a></h3>
+							<div id="aseta">
+								<input type="text" /> kg<br />
+								<input type="text" /> mennessä (vapaaehtoinen) <br />
+								<button>Aseta</button>
+							</div>
+							<h3><a href="#">Laske tavoite</a></h3>
+							<div id="laske">
+								Ikä: <input type="text" /><br />
+								Muut tarvittavat kentät selvitetään asiantuntijalta<br />
+								<button>Laske</button>
+							</div>
+						</div>
+						
+					</div>
 					
 					
 				</div>
