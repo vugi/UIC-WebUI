@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Walking off weight</title>
+        <title>Weightbook</title>
 		
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script> 
@@ -43,12 +43,13 @@
 			$( "#tabs" ).tabs();
 		});
 		</script>
+		
     </head>
     <body>
     	<div id="wrapper" class="ui-widget">
     		
 	    	<div id="header">
-	        	<h1>Walking off weight</h1>
+	        	<h1>Weightbook</h1>
 			</div>
 			
 			<div id="weight-add" class="ui-state-highlight ui-corner-all" style="margin-bottom: 10px;">
@@ -68,7 +69,7 @@
 				<div id="tabs-1">
 					
 					<div class="ui-widget-content">
-						<img src="http://chart.apis.google.com/chart?chxs=0,676767,10.833,0,l,676767&chxt=x&chbh=a,5,20&chs=450x200&cht=bvg&chco=76A4FB&chd=s:1XQbnf4&chg=9,9,6,4&chm=B,C6D9FD,0,0,0|D,4D89F9,0,0.033,5.667,1" />
+						<img src="http://chart.apis.google.com/chart?chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chs=500x193&cht=bvg&chco=76A4FB,FF9900&chd=t1:50,90,80,70,60,50,40,50,90,80,70,60,50,40|90,89,88,89,88,88,87,87,86,85,84,84,84,83&chma=6|2&chm=D,FF9900,1,0,2,1&&chdl=K%C3%A4vely|Paino" />
 						<img src="http://chart.apis.google.com/chart?chtt=Kehitys&chs=300x200&cht=gom&chd=t:70" />
 					</div>
 					
@@ -97,6 +98,8 @@
 				</div>
 			
 				<div id="tabs-2">
+					
+					<h3>Kertymä</h3>
 					<table>
 						<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
 						<tr><td>Tavoite</td><td>10000</td><td>70000</td><td>300000</td></tr>
@@ -104,7 +107,22 @@
 						<tr class="sumrow"><td></td><td class="red">-3000</td><td class="red">-20000</td><td class="green">+20000</td></tr>
 					</table>
 					
-					<p>Aseta tavoite: <input type="text" /> OK</p>
+					<h3>Tavoitteet</h3>
+					<p>Tavoitteesi on nyt: <b>10000</b> askelta <b>päivässä</b></p>
+					<p>
+						<h4>Aseta tavoite</h4>
+						<input type="text" /> askelta<br />
+						<input type="radio" name="1"> Päivässä <br />
+						<input type="radio" name="1"> Viikossa  <br />
+						<input type="radio" name="1"> Kuukaudessa <br />
+						<button>Aseta</button>
+					</p>
+					<p>
+						<h4>Laske tavoite</h4>
+						Ikä: <input type="text" /><br />
+						Muut tarvittavat kentät selvitetään asiantuntijalta
+						<button>Laske</button>
+					</p>
 				</div>
 				
 				<div id="tabs-3">
@@ -114,7 +132,8 @@
 						<tr><td>Toteutunut</td><td>7000</td><td>50000</td><td>320000</td></tr>
 						<tr class="sumrow"><td></td><td class="red">-3000</td><td class="red">-20000</td><td class="green">+20000</td></tr>
 					</table>
-					<p>Aseta tavoite: <input type="text" /> OK</p>
+					
+					
 				</div>
 			
 			</div>
