@@ -44,6 +44,9 @@
 			$( ".accordion" ).accordion({
 				autoHeight: false
 			});
+			$( "#weight-add-close" ).click(function(){
+				$( "#weight-add" ).fadeOut();
+			});
 		});
 		</script>
 		
@@ -58,7 +61,7 @@
 			<div id="weight-add" class="ui-state-highlight ui-corner-all" style="margin-bottom: 10px;">
 				<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
 				Syötä päivän paino: <input type="text" /> OK
-				<span class="ui-icon ui-icon-circle-close" style="float:right">close</span>
+				<span id="weight-add-close" class="ui-icon ui-icon-circle-close" style="float:right">close</span>
 			</div>
 			
 			<div id="tabs">
