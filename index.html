@@ -5,72 +5,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Weightbook</title>
 		
+		<!-- JQuery + JQuery UI -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script> 
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" type="text/css" media="screen">
 		
-		<style type="text/css">
-			body {
-				font-family: sans-serif;
-			}
-			#wrapper {
-				width: 1000px;
-				margin: 0 auto;
-			}
-			#weight-add {
-				margin-bottom: 10px;
-				/*padding: 10px;*/
-			}
-			#weight-add form {
-				margin: 2px 0 0 5px; 
-				padding: 5px 5px 5px 60px; 
-				background: url(assets/alert.png) no-repeat 0 2px;
-			}
-			#header {
-				padding: 10px;
-			}
-			
-			td {
-				padding: 3px 20px;
-			}
-			.sumrow td {
-				border-top: 1px solid black;
-			}
-			.red {
-				color: red;
-			}
-			.green {
-				color: green;
-			}
-			.column {
-				 width: 440px;
-				 height: 400px;
-				 background: white;
-				 padding: 0 10px;
-				 font-size: 0.8em;
-			}
-			h4 {
-				margin: 1em 0;
-			}
-		</style>
-		
-		<script type="text/javascript">
-		$(function() {
-			$( "#tabs" ).tabs();
-			$( ".accordion" ).accordion({
-				autoHeight: false
-			});
-			$( "#weight-add-close" ).click(function(){
-				$( "#weight-add" ).fadeOut();
-			});
-			$( "input:submit" ).button().click(function(){ 
-				$( "#weight-add" ).fadeOut();
-				return false;
-			});
-
-		});
-		</script>
-		
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<script type="text/javascript" src="weightbook.js"></script>
     </head>
     <body>
     	<div id="wrapper" class="ui-widget">

@@ -1,0 +1,42 @@
+body {
+	font-family: sans-serif;
+}
+#wrapper {
+	width: 1000px;
+	margin: 0 auto;
+}
+#weight-add {
+	margin-bottom: 10px;
+	/*padding: 10px;*/
+}
+#weight-add form {
+	margin: 2px 0 0 5px; 
+	padding: 5px 5px 5px 60px; 
+	background: url(assets/alert.png) no-repeat 0 2px;
+}
+#header {
+	padding: 10px;
+}
+
+td {
+	padding: 3px 20px;
+}
+.sumrow td {
+	border-top: 1px solid black;
+}
+.red {
+	color: red;
+}
+.green {
+	color: green;
+}
+.column {
+	 width: 440px;
+	 height: 400px;
+	 background: white;
+	 padding: 0 10px;
+	 font-size: 0.8em;
+}
+h4 {
+	margin: 1em 0;
+}
