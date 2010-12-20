@@ -14,15 +14,22 @@
 				font-family: sans-serif;
 			}
 			#wrapper {
-				width: 900px;
+				width: 1000px;
 				margin: 0 auto;
 			}
 			#weight-add {
+				margin-bottom: 10px;
+				/*padding: 10px;*/
 			}
-			
-			div {
+			#weight-add form {
+				margin: 2px 0 0 5px; 
+				padding: 5px 5px 5px 60px; 
+				background: url(assets/alert.png) no-repeat 0 2px;
+			}
+			#header {
 				padding: 10px;
 			}
+			
 			td {
 				padding: 3px 20px;
 			}
@@ -35,7 +42,16 @@
 			.green {
 				color: green;
 			}
-			
+			.column {
+				 width: 440px;
+				 height: 400px;
+				 background: white;
+				 padding: 0 10px;
+				 font-size: 0.8em;
+			}
+			h4 {
+				margin: 1em 0;
+			}
 		</style>
 		
 		<script type="text/javascript">
@@ -47,6 +63,11 @@
 			$( "#weight-add-close" ).click(function(){
 				$( "#weight-add" ).fadeOut();
 			});
+			$( "input:submit" ).button().click(function(){ 
+				$( "#weight-add" ).fadeOut();
+				return false;
+			});
+
 		});
 		</script>
 		
@@ -54,14 +75,22 @@
     <body>
     	<div id="wrapper" class="ui-widget">
     		
-	    	<div id="header">
-	        	<h1>Weightbook</h1>
+	    	<div id="header" style="position: relative;">
+				<h1>Weightbook</h1>
+				<div id="meter" style="position: absolute; top:0; right: 0;">
+					<span>Kehitys:</span>
+					<img src="http://chart.apis.google.com/chart?chs=200x120&cht=gom&chd=t:70" style="vertical-align: middle; position: relative; top:-20px;*/" />
+				</div>
 			</div>
 			
-			<div id="weight-add" class="ui-state-highlight ui-corner-all" style="margin-bottom: 10px;">
-				<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-				Syötä päivän paino: <input type="text" /> OK
-				<span id="weight-add-close" class="ui-icon ui-icon-circle-close" style="float:right">close</span>
+			<div id="weight-add" class="ui-state-highlight ui-corner-all ui-helper-clearfix"">
+				<span id="weight-add-close" class="ui-icon ui-icon-circle-close" style="float:right; margin: 18px 10px;">close</span>
+				<form>
+					<span>Syötä päivän paino:</span>
+					<input id="weight-add-amount" type="text" size="4"/>
+					<span>kg</span>
+					<input id="weight-add-submit" type="submit" value="OK">
+				</form>
 			</div>
 			
 			<div id="tabs">
@@ -73,15 +102,10 @@
 				</ul>
 			
 				<div id="tabs-1">
-					
-					<div class="ui-widget-content">
-						<img src="http://chart.apis.google.com/chart?chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chs=500x193&cht=bvg&chco=76A4FB,FF9900&chd=t1:50,90,80,70,60,50,40,50,90,80,70,60,50,40|90,89,88,89,88,88,87,87,86,85,84,84,84,83&chma=6|2&chm=D,FF9900,1,0,2,1&&chdl=K%C3%A4vely|Paino" />
-						<img src="http://chart.apis.google.com/chart?chtt=Kehitys&chs=300x200&cht=gom&chd=t:70" />
-					</div>
-					
-					<h3>Kävely</h3>
-					
-					<div class="ui-widget-content">
+					<div class="ui-widget-content ui-corner-all column" style="float:left;">
+						<h4>Kävely</h4>
+						<img src="http://chart.apis.google.com/chart?chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chs=440x193&cht=bvg&chco=76A4FB,FF9900&chd=t1:50,90,80,70,60,50,40,50,90,80,70,60,50,40" />
+						<p></p>
 						<table>
 							<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
 							<tr><td>Tavoite</td><td>10000</td><td>70000</td><td>300000</td></tr>
@@ -90,10 +114,11 @@
 						</table>
 					</div>
 					
-					<h3>Paino</h3>
-					
-					<div class="ui-widget-content">
-						<table style="float: left; margin-right: 40px;">
+					<div class="ui-widget-content ui-corner-all column" style="float:right;">
+						<h4>Paino</h4>
+						<img src="http://chart.apis.google.com/chart?cht=lc&chxt=x,y&chbh=a&chs=440x193&chco=76A4FB,FF9900&chd=t1:90,89,88,89,88,88,87,87,86,85,84,84,84,83&chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11" />
+						<p></p>
+						<table style="float: left; margin-right: 30px;">
 							<tr><td>Paino nyt</td><td>75</td></tr>
 							<tr><td>Tavoite</td><td>70</td></tr>
 							<tr class="sumrow"><td>Ero</td><td class="red">+5</td></tr>
@@ -101,6 +126,8 @@
 						<p>Viimeisen viikon muutos: <span class="red">+1kg</span></p>
 						<p>Viimeisen kuukauden muutos: <span class="green">-5kg</span></p>
 					</div>
+					
+					<div class="ui-helper-clearfix"></div>
 					
 				</div>
 			
