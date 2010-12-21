@@ -8,10 +8,21 @@
 		<!-- JQuery + JQuery UI -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script> 
-		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" type="text/css" media="screen" />
 		
-		<link rel="stylesheet" href="style.css" type="text/css">
+		<!-- Google JS API -->
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		
+		<!-- Weightbook JS -->
 		<script type="text/javascript" src="weightbook.js"></script>
+		
+		<!-- Google visualizations api -->
+		<script type="text/javascript">
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawCharts);
+		</script>
+		
+		<link rel="stylesheet" href="style.css" type="text/css" />
     </head>
     <body>
     	<div id="wrapper" class="ui-widget">
@@ -45,7 +56,7 @@
 				<div id="tabs-1">
 					<div class="ui-widget-content ui-corner-all column" style="float:left;">
 						<h4>Kävely</h4>
-						<img src="http://chart.apis.google.com/chart?chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chs=440x193&cht=bvg&chco=76A4FB,FF9900&chd=t1:50,90,80,70,60,50,40,50,90,80,70,60,50,40" />
+						<div id="walk-summary-graph"></div>
 						<p></p>
 						<table>
 							<tr><td></td><td>Tänään</td><td>Viikko</td><td>Kuukausi</td></tr>
@@ -57,25 +68,30 @@
 					
 					<div class="ui-widget-content ui-corner-all column" style="float:right;">
 						<h4>Paino</h4>
-						<img src="http://chart.apis.google.com/chart?cht=lc&chxt=x,y&chbh=a&chs=440x193&chco=76A4FB,FF9900&chd=t1:90,89,88,89,88,88,87,87,86,85,84,84,84,83&chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11" />
+						<div id="weight-summary-graph"></div>
 						<p></p>
 						<table style="float: left; margin-right: 30px;">
 							<tr><td>Paino nyt</td><td>75</td></tr>
 							<tr><td>Tavoite</td><td>70</td></tr>
 							<tr class="sumrow"><td>Ero</td><td class="red">+5</td></tr>
 						</table>
-						<p>Viimeisen viikon muutos: <span class="red">+1kg</span></p>
-						<p>Viimeisen kuukauden muutos: <span class="green">-5kg</span></p>
+						<p>Viimeisen viikon muutos: <span class="green">-1kg</span></p>
+						<p>Viimeisen kuukauden muutos: <span class="green">-3kg</span></p>
 					</div>
 					
 					<div class="ui-helper-clearfix"></div>
-					
 				</div>
 			
 				<div id="tabs-2">
 					
-					<div class="ui-widget-content">
-						<img src="http://chart.apis.google.com/chart?chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chs=500x193&cht=bvg&chco=76A4FB,FF0000&chd=t1:50,90,80,70,60,50,40,50,90,80,70,60,50,40|80&chm=H,FF0000,1,1,1&chdl=Toteutunut|Tavoite" />
+					<div id="walk-graph-container" class="graph-container ui-widget-content">
+						<div class="scrollbutton left">
+							<span class="ui-icon ui-icon-arrowthick-1-w"></span>
+						</div>
+						<div class="scrollbutton right">
+							<span class="ui-icon ui-icon-arrowthick-1-e"></span>
+						</div>
+						<div id="walk-graph"></div>
 					</div>
 					
 					<h3>Kertymä</h3>
@@ -115,8 +131,14 @@
 				
 				<div id="tabs-3">
 					
-					<div class="ui-widget-content">
-						<img src="http://chart.apis.google.com/chart?chs=500x193&cht=lc&chg=0,10&chds=80,90&chxr=1,80,90&chxl=0:|1.11|2.11|3.11|4.11|5.11|6.11|7.11|8.11|9.11|10.11|11.11|12.11|13.11|14.11&chxt=x,y&chbh=a&chco=76A4FB,FF9900&chd=t:90,89,88,89,88,88,87,87,86,85,84,84,84,83|90,80&chdl=Paino|Tavoite" />
+					<div id="weight-graph-container" class="graph-container ui-widget-content">
+						<div class="scrollbutton left">
+							<span class="ui-icon ui-icon-arrowthick-1-w"></span>
+						</div>
+						<div class="scrollbutton right">
+							<span class="ui-icon ui-icon-arrowthick-1-e"></span>
+						</div>
+						<div id="weight-graph"></div>
 					</div>
 					
 					<br />
@@ -156,6 +178,7 @@
 				</div>
 			
 			</div>
+
 			
 		</div>
     </body>

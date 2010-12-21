@@ -30,13 +30,41 @@ td {
 .green {
 	color: green;
 }
+
+h4 {
+	margin: 0.5em 0 0 0;
+}
+
+#weight-graph, #walk-graph {
+	width: 942px;
+	height: 300px;
+}
+
+.ui-tabs-panel .ui-widget-content {
+	background: white;
+	padding: 10px;
+	font-size: 0.8em;
+}
+
 .column {
 	 width: 440px;
 	 height: 400px;
-	 background: white;
 	 padding: 0 10px;
-	 font-size: 0.8em;
 }
-h4 {
-	margin: 1em 0;
+
+.graph-container {
+	position: relative;
+}
+
+.scrollbutton{
+	position: absolute;
+	top: 140px;
+}
+
+.scrollbutton.left {
+	left: 10px;
+}
+
+.scrollbutton.right {
+	right: 10px;
 }
