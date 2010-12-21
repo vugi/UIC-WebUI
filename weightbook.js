@@ -16,16 +16,35 @@ $(document).ready(function() {
 		$( "#weight-add" ).fadeOut();
 		return false;
 	});
+	
+	/* Graph scrolling */
 
 	$( ".scrollbutton" ).button();
+	
+	$( "#walk-graph-container .scrollbutton.left" ).click(function(){ 
+		scrollWalkGraph(-5);
+	});
+	
+	$( "#walk-graph-container .scrollbutton.right" ).click(function(){ 
+		scrollWalkGraph(5);
+	});
+	
+	$( "#weight-graph-container .scrollbutton.left" ).click(function(){ 
+		scrollWeightGraph(-5);
+	});
+	
+	$( "#weight-graph-container .scrollbutton.right" ).click(function(){ 
+		scrollWeightGraph(5);
+	});
+	
 });
 
 var weightData, walkData;
 var weightTarget, walkTarget;
+var graphs = {};
+var skips = {};
 
 function drawCharts(){
-	
-	var today = new Date();
 	
 	/* Generate Data */
 				
@@ -44,9 +63,10 @@ function drawCharts(){
 	weightTarget = Math.round(weight-2);
 	walkTarget = 10000;
 	
-	// Let's generate month of data back from today
+	// Let's generate some of data back from today
 	var amount = 100;
-	var date = new Date(today).setDate(today.getDate()-amount-1);
+	var date = new Date();
+	date.setDate(date.getDate()-amount-1);
 	for (var i=amount;i>0;i--){
 		date = new Date(date)
 		date.setDate(date.getDate()+1);
@@ -59,68 +79,74 @@ function drawCharts(){
 		walkData.addRow([date, walk, walkTarget]);
 	}
 	
-	var weightSummaryData = new google.visualization.DataView(weightData);
-	weightSummaryData.setRows(amount-1-20, amount-1);
-	weightSummaryData.setColumns([0,1]);
-
-    var weightSummaryChart = new google.visualization.AreaChart(document.getElementById('weight-summary-graph'));
-	weightSummaryChart.draw(weightSummaryData,{
-		width: 440, 
-		height: 200,
-		legend: 'none'
-       });
-	   
-	var walkSummaryData = new google.visualization.DataView(walkData);
-	walkSummaryData.setRows(amount-1-20, amount-1);
-	walkSummaryData.setColumns([0,1]);
-	   
-	var walkSummaryChart = new google.visualization.ColumnChart(document.getElementById('walk-summary-graph'));
-	walkSummaryChart.draw(walkSummaryData,{
-		width: 440, 
-		height: 200,
-		legend: 'none'
-       });
-	 
-	showWeightGraph(30);
+	showSummaryGraph(20,walkData,"walk-summary-graph","ColumnChart");
+	showSummaryGraph(20,weightData,"weight-summary-graph","AreaChart");
+	
 	showWalkGraph(30);
+	showWeightGraph(30);
+	
 }
 
-function showWalkGraph(amount, skip){
+function showSummaryGraph(days,data,elementName,type){
+	if(!type){
+		type = "AreaChart";
+	}
+	var dataView = new google.visualization.DataView(data);
+	var lastIndex = dataView.getNumberOfRows()-1;
+	dataView.setRows(lastIndex-20, lastIndex);
+	dataView.setColumns([0,1]);
+	   
+	var summaryChart = new google.visualization[type](document.getElementById(elementName));
+	summaryChart.draw(dataView,{
+		width: 440, 
+		height: 200,
+		legend: 'none'
+       });
+}
+
+function showBigGraph(amount, skip, data, name){
+	var dataView = new google.visualization.DataView(data);
+	var maxIndex = dataView.getNumberOfRows()-1;
 	
-	if (!skip){
+	// Update skip amount & scrolling button states
+	var rightButtonState="enable", leftButtonState="enable";
+	if (!skip || skip <= 0){
 		skip = 0;
+		rightButtonState = "disable";
 	}
+	if (skip >= maxIndex-amount){
+		skip = maxIndex-amount;
+		leftButtonState  = "disable";
+	}
+	skips[name] = skip;
 	
-	var walkDataView = new google.visualization.DataView(walkData);
-	var lastIndex = walkDataView.getNumberOfRows()-1 - skip;
+	var lastIndex = maxIndex - skip;
 	var firstIndex = lastIndex - amount
-	walkDataView.setRows(firstIndex, lastIndex);
+	dataView.setRows(firstIndex, lastIndex);
 	
-	var walkChart = new google.visualization.AreaChart(document.getElementById('walk-graph'));
-	walkChart.draw(walkDataView, {width: 922, height: 300});
-	
-	if (skip==0){
-		$( "#walk-graph-container .scrollbutton.right" ).button('disable');
+	if (!graphs[name]){
+		graphs[name] = new google.visualization.AreaChart(document.getElementById(name));
 	}
 	
+	graphs[name].draw(dataView, {width: 922, height: 300});
+	
+	// Update scrolling buttons
+	$("#"+name+"-container .scrollbutton.right").button(rightButtonState);
+	$("#"+name+"-container .scrollbutton.left").button(leftButtonState);
 }
 
-function showWeightGraph(amount, skip){
-	
-	if (!skip){
-		skip = 0;
-	}
-	
-	var weightDataView = new google.visualization.DataView(weightData);
-	var lastIndex = weightDataView.getNumberOfRows()-1 - skip;
-	var firstIndex = lastIndex - amount
-	weightDataView.setRows(firstIndex, lastIndex);
-	
-	var weightChart = new google.visualization.AreaChart(document.getElementById('weight-graph'));
-	weightChart.draw(weightDataView, {width: 922, height: 300});
-	
-	if (skip==0) {
-		$("#weight-graph-container .scrollbutton.right").button('disable');
-	}
+function showWalkGraph(days, skip){
+	showBigGraph(days,skip,walkData,"walk-graph");
 }
 
+function showWeightGraph(days, skip){
+	showBigGraph(days,skip,weightData,"weight-graph");
+}
+
+function scrollWalkGraph(days){
+	showWalkGraph(30,skips["walk-graph"]-days);
+}
+
+function scrollWeightGraph(days){
+	showWeightGraph(30,skips["weight-graph"]-days);
+}
